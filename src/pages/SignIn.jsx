@@ -46,7 +46,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
       })
       .catch(err => {
         setPreload(false)
-        handleAlert('Something Went Wrong');
+        handleAlert('Something not right Wrong');
       })
   };
 
