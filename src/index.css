@@ -1,0 +1,683 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FAGs */
+.FAQ{
+    /* border: 2px solid grey; */
+    /* overflow: hidden; */
+}
+.FAQ-tittle{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.FAQ-answer{
+   display: none;
+
+}
+.FAQ-answer.active{
+    display: block;
+}
+/* Dashboard header */
+.profile{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 50%;
+}
+.profile > .username, .profile > .icon{
+    margin: 0 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 3px;
+}
+.profile .accountBalance{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+    width: 20%;
+}
+.profile > .signOutBtn{
+    font-size: 1.2rem;
+    margin: 0 10px;
+    position: absolute;
+    right: 0;
+}
+.profile .icon{
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 3px;
+}
+/* logIn and Sign Up */
+/*
+.logIn, .signUp{
+    position: relative;
+    overflow-y: hidden;
+}
+.logIn .alert,
+.signUp .alert{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #FF5733 ;
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    transform: translateY(-100%);
+    transition: all linear .5s;
+    font-size: 1.3rem;
+    text-transform: capitalize ;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+.logIn .alert.active,
+.signUp .alert.active{
+    transform: translateY(0);
+}
+/* main */
+.main{
+    display: flex;
+    height: 80vh;
+    width: 100%;
+}
+
+/* Left Side Bar */
+/*
+.leftSideBar{
+    height: 100%;
+    width: 20%;
+    padding: 10px;
+}
+.leftSideBar .links{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 1.3rem;
+    align-items: center;
+    position: relative;
+    margin: 3px 0;
+    cursor: pointer;
+}
+
+.leftSideBar .links.active
+{
+    background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+.leftSideBar .sideIcon{
+    position: absolute;
+    left: 30%;
+    color: white;
+}
+.leftSideBar span{
+    position: absolute;
+    left: 40%;
+}
+.mainSection{
+    width: 80%;
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+*/
+.mainSection .alert{
+    position: absolute;
+    width: 40%;
+    height: 50px;
+    background-color: #FF8F39;
+    color: #FFF4EC;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transform: translateY(-100%);
+    transition: all linear .3s;
+    text-transform: capitalize;
+}
+.mainSection .alert.active{
+    transform: translateY(0);
+}
+
+/* Details Page */
+.Details{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    padding: 10px;
+}
+.Details .image{
+    border: 1px solid grey;
+    display:  flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+.Details .detailsIcon{
+    height: 100px;
+    width: 100px;
+    color: rgb(210, 210, 210);
+}
+.Details .userNameDetails{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80px;
+    width: 15%;
+    font-size: 1.3rem;
+}
+.Details .userNameDetails .location{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    color: rgb(156, 154, 154);
+
+}
+Details .userNameDetails .location .locationIcon{
+    font-size: 2rem;
+}
+.Details .uploadImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background-color: rgb(99 102 241);
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+.Details .uploadImage > *{
+    margin: 0 5px;
+}
+.Details h3{
+    color: rgb(99 102 241);
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+.Details .moreDetails{
+    border: 1px solid grey;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.Details .moreDetails > *{
+    margin: 10px 0;
+    position: relative;
+}
+
+.Details .moreDetails div > :first-child{
+    position: absolute;
+    left: 0;
+    color: rgb(99 102 241);
+}
+.Details .moreDetails div > :last-child{
+    position: relative;
+    left: 200px;
+
+}
+
+/* Bills Page */
+.Bills{
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.Bills .header{
+    border: 1px solid grey; 
+    border-radius: 5px;
+    height: 20%;
+    width: 100%;
+}
+.Bills .accountAmount{
+    color: rgb(72, 75, 249);
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+}
+.Bills .accountAmount .accountBalance{
+    padding: 0 10px;
+    font-weight: 600;
+}
+.Bills h2{
+    color: rgb(99 102 241);
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.Bills .billTypes{
+    border: 1px solid grey; 
+    border-radius: 5px;
+    height: 70%;
+    width: 100%;
+}
+
+.Bills .billTypes .selectBills{
+    margin: 10px;
+    padding: 10px;
+    height: 70px;
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Bills .billTypes .selectBills select{
+    width: 40%;
+    height: 40px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+.Bills .billTypes .selectBills button{
+    width: 200px;
+}
+.Bills .billsContainer{
+    border: 1px solid green;
+    margin: 0 10px;
+    height: calc(100% - 100px);
+    position: relative;
+    overflow: hidden;
+}
+.Bills .BillsTittle{
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    width: 50%;
+    border: 1px solid grey;
+    height: 50px;
+}
+.Bills .BillsTittle.current{
+    background-color: rgb(205, 205, 205);
+    border-bottom: 1px solid rgb(205, 205, 205);
+    color: black;
+    cursor: default;
+    text-decoration: underline;
+}
+.Bills .active.BillsTittle{
+    left: 0px;
+}
+.Bills .selected.BillsTittle{
+    right: 0px;
+}
+.Bills .displayBills{
+    height: 100%;
+    overflow-y: auto;
+}
+.Bills .listBills{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: calc(100% - 50px);
+    transform: translatex(100%);
+}
+.Bills .listBills.active{
+    background-color: rgb(205, 205, 205);
+    transform: translatex(0);
+}
+.Bills .listBills .btn{
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 120px;
+}
+.Bills .noBills{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    bottom: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+    font-size: 2rem;
+}
+.Bills .singleBill{
+    height: 50px;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: rgb(125, 125, 250);
+    margin: 5px auto;
+    border-radius: 5px;
+}
+.Bills .deleteBill{
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 3px;
+    color: rgb(197, 19, 19);
+
+}
+.Bills .activeBillsTittle{
+    text-decoration: underline;
+}
+.Bills .singleBill.active{
+    background-color: rgb(123, 123, 237);
+}
+.Bills .singleBill h3{
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+    width: 60%;
+    border-radius: 5px;
+    text-transform: uppercase;
+
+}
+
+.Bills .singleBill.active h3:hover{
+    background-color: rgb(123, 123, 237);
+}
+.Bills .singleBill .pay{
+    height: 200px;
+    width: 70%;
+    border: 1px dotted black;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    display: none;
+
+}
+.Bills .singleBill .pay input{
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    width: 40%;
+}
+.Bills .singleBill .pay button{
+   width: 40%;
+    
+}
+.Bills .selectedBills .singleBill{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.Bills .selectedBills .listBills{
+    overflow-y: auto;
+}
+.Bills .selectedBills .listBills .moreInfo{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.Bills .selectedBills .listBills span{
+    color: white;
+}
+.Bills .selectedBills .listBills .billTittle{
+    color: rgb(69, 69, 243);
+}
+/* Withdaw Page */
+.withdraw{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+.withdraw .cachWithdraw{
+    width: 50%;
+    height: 50%;
+    border: 2px dotted grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.withdraw .cachWithdraw .accountBalance{
+    padding: 0 5px;
+    font-weight: 600;
+}
+.withdraw .cachWithdraw p{
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.withdraw .payTo{
+    border: 1px solid grey;
+    padding: 4px;
+    border-radius: 5px;
+}
+.withdraw .payTo span{
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.withdraw .cachWithdraw input{
+    border: 1px solid grey;
+    padding: 4px;
+    border-radius: 5px;
+}
+.withdraw .payTo input{
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.withdraw .cachWithdraw button{
+    cursor: pointer;
+    width: 200px;
+}
+
+/* Savings */
+.Savings{
+    border: 1px solid black;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Savings .tittle{
+    font-size: 2rem;
+    background-color: grey;
+    width: 100%;
+    text-align: center;
+}
+.Savings .addSaving{
+    border: 2px solid black;
+    height: 200px;
+    width: 100%;
+}
+.Savings .singleSaving{
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 5px 5px grey;
+    width: 50%;
+    justify-content: space-between;
+    height: 100px;
+}
+.Savings .singleSaving > *{
+    border-right: 1px solid grey;
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Savings .singleSaving .circle{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+}
+
+.Savings .singleSaving.saving1::before,
+.Savings .singleSaving.saving2::before,
+.Savings .singleSaving.saving3::before{
+    content: "";
+    position: absolute;
+    height: 90%;
+    border-radius: 200px;
+    left: 2px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 5px;
+    background-color: #1dcc70 ;
+}
+.Savings .singleSaving.saving2::before{
+    background-color: #9a3ada;
+}
+.Savings .singleSaving.saving3::before{
+    background-color: #ff396f;
+}
+
+.Savings .singleSaving.saving1 .circle{
+    background-image: conic-gradient(#1dcc70 108deg, rgb(193, 193, 193) 108deg);
+}
+.Savings .singleSaving.saving2 .circle{
+    background-image: conic-gradient(#9a3ada 324deg,rgb(193, 193, 193)  324deg);
+}
+.Savings .singleSaving.saving3 .circle{
+    background-image: conic-gradient(#ff396f 216deg,rgb(193, 193, 193) 216deg);
+}
+
+.Savings .singleSaving .circle2{
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* User Transactions */
+.userTransactions{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userTransactions .tittle{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    font-size: 2rem;
+    color: rgb(72, 75, 249);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.userTransactions .viewTransactions{
+    height: 90%;
+    width: 100%;
+    overflow-y: auto;
+}
+.userTransactions .viewTransactions table{
+    width: 100%;
+}
+.userTransactions .viewTransactions table tr{
+    width: 100%;
+}
+.userTransactions .viewTransactions table th{
+    width: calc(100% /  5);
+    height: 2rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid grey;
+}
+.userTransactions .viewTransactions table td{
+    width: calc(100% /  5);
+    height: 2rem;
+    text-align: center;
+}
+
+@media  (max-width: 768px) {
+    .main{
+        flex-direction: column;
+    }
+    .leftSideBar{
+        width: 100%;
+        height: 35%;
+    }
+    .mainSection{
+        width: 100%;
+    }
+    .withdraw .cachWithdraw{
+        width: 80%;
+    }
+
+}
+
+/* set preload */
+
+.btnPreload{
+    display: none;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-image: conic-gradient(white 324deg,#22c55e 324deg);
+    border-radius: 50%;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.btnPreload.active{
+    display: flex;
+}
+.btnPreload span{
+    height: 80%;
+    border-radius: 50%;
+    width: 80%;
+}
+
+@keyframes rotate {
+    0%{
+        rotate: 0deg;
+    }
+    25%{
+        rotate: 90deg;
+    }
+    50%{
+        rotate: 180deg;
+    }
+    75%{
+        rotate: 270deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+}
