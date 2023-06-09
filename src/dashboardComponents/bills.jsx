@@ -14,7 +14,7 @@ const bills = ({handleAlert, userInfo}) => {
   const [activeBillSection, setActiveBillSection] = useState(true);
 
   function getAllBills(){
-    fetch("https://api.rhonpesa.online/api/v1/get-all-bills")
+    fetch("http://localhost:4444/api/v1/get-all-bills")
     .then(res => res.json())
     .then(res => {
       setAvailableBills(res);
@@ -23,11 +23,11 @@ const bills = ({handleAlert, userInfo}) => {
 
   function getUserActiveBIlls(){
     const session = JSON.parse(sessionStorage.getItem('session'));
-    console.log("session:", session)
-    fetch(`https://api.rhonpesa.online/api/v1/get-merchant-bills/${session['_id']}`)
+    console.log("session:", session['_id'])
+    fetch(`http://localhost:4444/api/v1/get-merchant-bills/${session['_id']}`)
     .then(res => res.json())
     .then(res => {
-      console.log(res)
+      console.log("res:",res)
       setActiveBills(res);
     })
   }
@@ -112,12 +112,13 @@ const bills = ({handleAlert, userInfo}) => {
 
   const addBill = ()=>{
     const session = JSON.parse(sessionStorage.getItem('session')); 
-    fetch('https://api.rhonpesa.online/api/v1/add-merchant-bill', {
+    fetch('http://localhost:4444/api/v1/add-merchant-bill', {
       method: 'POST',
       body: JSON.stringify(
         {
           "merchant_id": session['_id'],
-          "bill_id": bills[0]['_id']
+          "bill_id": bills[0]['_id'],
+          "start_date":(value !== "NHIF")?new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1):"",
         }
       ),
       headers: {
@@ -141,46 +142,46 @@ const bills = ({handleAlert, userInfo}) => {
 
   return (
     <section className="w-full bg-lime-100 h-full">
-      <div className='border-dashed border-2 w-full px-4 py-4 text-2xl'>
-        <p className='accountAmount'>Account Balance: Ksh <span className='accountBalance'>{userInfo.balance < 0 ? "0" : userInfo.balance}</span></p>
-        <h2>Lipa Bills bila Stress</h2>
-      </div>
-      <div className='flex justify-between border-dashed border-2 w-full px-4 py-4 text-lg'>
-        <select className="bg-lime-50 px-2 rounded-lg" name="billName" id="" defaultValue='Default' onChange={handleBillValue}>
-          <option selected disabled value='Default'>Select your bills..</option>
-          {availableBills.map((singleBill)=>{
-            return <AvailableBills key={singleBill._id} billId={billId} singleBill={singleBill}/>
-          })}
-        </select>
-        <button className='py-2 px-16  bg-violet-400 hover:bg-violet-600 text-white rounded-lg' onClick={handleSetBills}>Add</button>
-      </div>
+    <div className='border-dashed border-2 w-full px-4 py-4 text-2xl'>
+      <p className='accountAmount'>Account Balance: Ksh <span className='accountBalance'>{userInfo.balance < 0 ? "0" : userInfo.balance}</span></p>
+      <h2>Lipa Bills bila Stress</h2>
+    </div>
+    <div className='flex justify-between border-dashed border-2 w-full px-4 py-4 text-lg'>
+      <select className="bg-lime-50 px-2 rounded-lg" name="billName" id="" defaultValue='Default' onChange={handleBillValue}>
+        <option selected disabled value='Default'>Select your bills..</option>
+        {availableBills.map((singleBill)=>{
+          return <AvailableBills key={singleBill._id} billId={billId} singleBill={singleBill}/>
+        })}
+      </select>
+      <button className='py-2 px-16  bg-violet-400 hover:bg-violet-600 text-white rounded-lg' onClick={handleSetBills}>Add</button>
+    </div>
 
-      <div className='billsContainer'>
-        {/* Display Selected Bills */}
-        <div className='bg-slate-300'>
-          <div className={activeBillSection? 'listBills' : 'listBills active'}>
-            {
-              bills.map((bill)=>{
-                return <SingleSelectedBill bill={bill} id={bill.id} deleteBill={deleteBill} addBill={addBill}/>
-              })
-            }            
-          </div>
-          
+    <div className='billsContainer'>
+      {/* Display Selected Bills */}
+      <div className='bg-slate-300'>
+        <div className={activeBillSection? 'listBills' : 'listBills active'}>
+          {
+            bills.map((bill)=>{
+              return <SingleSelectedBill bill={bill} id={bill.id} deleteBill={deleteBill} addBill={addBill}/>
+            })
+          }            
         </div>
-        {/* Display Active Bills */}
-        <div className="mt-2 px-4">
-          <h2 id='activeBill'className="text-xl bg-lime-200 py-1 rounded-lg px-4 text-bold" onClick={handleActiveBillSection}>Active Bills</h2>
-          <div className={activeBillSection? 'listBills active' : 'listBills'}>
-            {
-              activeBills.map((singleBill)=>{
-                return <ActiveBills key={singleBill['_id']} bill={singleBill} deleteActiveBill={deleteActiveBill}/>
-              })
-            }
-            {activeBills.length? "": '' || <p className='noBills'>No Active Bills</p>}
-          </div>
+        
+      </div>
+      {/* Display Active Bills */}
+      <div className="mt-2 px-4">
+        <h2 id='activeBill'className="text-xl bg-lime-200 py-1 rounded-lg px-4 text-bold" onClick={handleActiveBillSection}>Active Bills</h2>
+        <div className={activeBillSection? 'listBills active' : 'listBills'}>
+          {
+            activeBills.map((singleBill)=>{
+              return <ActiveBills key={singleBill['_id']} bill={singleBill} deleteActiveBill={deleteActiveBill}/>
+            })
+          }
+          {activeBills.length? "": '' || <p className='noBills'>No Active Bills</p>}
         </div>
       </div>
-    </section >
+    </div>
+  </section >
   )
 }
 

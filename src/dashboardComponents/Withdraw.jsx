@@ -51,7 +51,7 @@ const Withdraw = ({userInfo, handleAlert}) => {
       return;
     }
     setPreload(true);
-    fetch('https://api.rhonpesa.online/api/v1/withdraw', {
+    fetch('http://localhost:4444/api/v1/withdraw', {
       method: 'POST',
       body:JSON.stringify({
           "amount": amount,

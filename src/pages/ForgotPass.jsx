@@ -20,7 +20,7 @@ const ForgotPass = ({handleAlert, alert}) => {
             return;
         }
         setPreload(true);
-        fetch('https://api.rhonpesa.online/api/v1/merchant/reset-pass', {
+        fetch('http://localhost:4444/api/v1/merchant/reset-pass', {
             method: "POST",
             body: JSON.stringify({
                 "business_name": business_name
@@ -40,66 +40,32 @@ const ForgotPass = ({handleAlert, alert}) => {
 
   return (
     <div>
-    <Navigation />
-    <section className="logIn">
-      <div className={alert.show? 'alert active': 'alert'}>{alert.alert}</div>
-      <div className="flex flex-col justify-center min- py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-3xl font-extrabold text-center text-neutral-600">
-            Reset Your Password
-          </h2>
-        </div>
-
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="px-4 py-8 sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
-              <div>
-                <label
-                  htmlFor="business_name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Enter Your Business Name
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="business_name"
-                    name="business_name"
-                    type="business_name"
-                    onChange={handleBusinessName}
-                    required
-                    className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                  />
+        <Navigation />
+        <section className="w-full md:w-8/12 m-auto bg-yellow-200 mt-6 rounded-lg">
+            <div className="py-4 px-3 text-center">
+                <h3>change changePassword</h3>
+            </div>
+            <div className="py-4 text-center">
+                <div className="py-2 my-2">
+                    <label className="text-xl w-3/4">enter your business name</label> <br/>
                 </div>
-              </div>
-
-              <div>
-                <button
-                  type="button"
-                  onClick={changePassword}
-                  className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                    {preload? "": "Reset Password"} 
-
-                    <span className={preload? 'btnPreload active': 'btnPreload'}><span className='bg-blue-600 '></span></span>
-
-                </button>
-                <div className="w-full h-20 flex items-center justify-center">
+                <div>
+                    <input
+                        type="text"
+                        name="business name"
+                        value ={business_name}
+                        onChange={handleBusinessName}
+                        className="px-2 py-4 h-6 rounded-lg w-3/4 "
+                    />
                 </div>
-                <h1 className="mt-3 mr-3 capitalize">
-                 or go back to {" "}
-                  <Link to="/signin">
-                    <span className="text-blue-700 font-bold cursor-pointer">
-                      Sign In
-                    </span>
-                  </Link>
-                </h1>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+            </div>
+            <div className='text-center py-4 text-white'>
+                <button  className="py-1 w-3/4 px-2 text-center bg-violet-500 hover:bg-violet-700 rounded-lg" onClick={changePassword}>Submit</button>
+            </div>
+            
+        </section>
+     
+    </div>
    
   )
 }

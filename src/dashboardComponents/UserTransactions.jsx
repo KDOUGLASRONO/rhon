@@ -6,7 +6,7 @@ const UserTransactions = () => {
 
   function getTransactions(){
     const session = JSON.parse(sessionStorage.getItem('session'));
-    fetch(`https://api.rhonpesa.online/api/v1/merchant-transactions/${session['_id']}`)
+    fetch(`http://localhost:4444/api/v1/merchant-transactions/${session['_id']}`)
     .then(res => res.json())
     .then(res => {
       setTransactions(res)

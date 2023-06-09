@@ -26,7 +26,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
 
   const signIn = () => {
     setPreload(true);
-    fetch("https://api.rhonpesa.online/api/v1/merchant/login", {
+    fetch("http://localhost:4444/api/v1/merchant/login", {
       method: "POST",
       body: JSON.stringify(details),
       headers: {
@@ -71,7 +71,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
                     className="block text-sm font-medium text-gray-700"
                   >
                     {" "}
-                    Email address{" "}
+                    Email address / phone number{" "}
                   </label>
                   <div className="mt-1">
                     <input

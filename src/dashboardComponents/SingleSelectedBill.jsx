@@ -2,6 +2,8 @@ import React from 'react'
 import {MdDelete} from 'react-icons/md'
 
 const SingleSelectedBill = ({bill, deleteBill, addBill}) => {
+  /*
+  initial calculateion
     const calculateDailyDeductions = () =>{
       if(bill.period == "Yearly"){
         if(bill.name == 'NHIF'){
@@ -9,7 +11,8 @@ const SingleSelectedBill = ({bill, deleteBill, addBill}) => {
         }else{
           return Math.ceil(bill.amount / 365);
         }
-      }else{
+      }
+      else{
         if(bill.name == 'NHIF'){
           return 20;
         }
@@ -17,7 +20,40 @@ const SingleSelectedBill = ({bill, deleteBill, addBill}) => {
           return Math.ceil(bill.amount / 30);
         }
       }
+    }*/
+
+  const dailyDeductions = ()=>{
+    const interest = (amount)=>{
+      if(amount<11){
+        return 2
+      }
+      else if(amount<100 && amount>10){
+        return 3
+      }
+      else if(amount<500 && amount>99){
+        return 5
+      }
+      else if(amount<1000 && amount>499){
+        return 8
+      }
     }
+
+    if(bill.period.toUpperCase() == 'DAILY'){
+      return bill.amount + interest(bill.amount )
+    }
+    else if(bill.period.toUpperCase() == 'WEEKLY'){
+      return Math.ceil(bill.amount/7) + interest(Math.ceil(bill.amount/7))
+    }
+    else if(bill.period.toUpperCase() == '2 WEEKS'){
+      return Math.ceil(bill.amount/14) + interest(Math.ceil(bill.amount/14))
+    }
+    else if(bill.period.toUpperCase() == 'MONTHLY'){
+      return Math.ceil(bill.amount/30) + interest(Math.ceil(bill.amount/30))
+    }
+    else if(bill.period.toUpperCase() == 'YEARLY'){
+      return Math.ceil(bill.amount/365) + interest(Math.ceil(bill.amount/365))
+    }
+  }
     return (
       <div className='fixed inset-0 bg-black bg-opacity-30 flex' id={bill['_id']} onClick={deleteBill}>
         <div className='bg-yellow-100 w-fit h-fit m-auto px-4 py-4 rounded-lg' id={bill.id}>
@@ -33,7 +69,7 @@ const SingleSelectedBill = ({bill, deleteBill, addBill}) => {
               </div>
               <div className="flex justify-between py-1">
                 <p>Daily deduction:</p>
-                <h3>{calculateDailyDeductions()}</h3>
+                <h3>{dailyDeductions()}</h3>
               </div>
             </div>
             <div className="flex justify-between">

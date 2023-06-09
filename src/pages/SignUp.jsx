@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FaPhp } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,21 +10,39 @@ const SignUp = ({session, handleAlert, alert}) => {
   if(session){
     navigate('/dashboard');
   }
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [business, setBusiness] = useState("");
+  const [location, setLocation] = useState("");
   const [preload, setPreload] = useState(false);
+  const [password, setPassword] = useState("");
+  const [pass, setPass] = useState("");
+  const [errorPassword, setErrorPassword]= useState("");
 
 
+  useEffect(()=>{
+    if(pass!=password){
+      setErrorPassword("passwords do not match")
+    }
+    else{
+      setErrorPassword("");
+    }
+  },[pass, password])
 
   const signUp = () => {
     setPreload(true);
-    fetch("https://api.rhonpesa.online/api/v1/merchant", {
+    fetch("http://localhost:4444/api/v1/merchant", {
       method: "POST",
       body: JSON.stringify({
+        firstName:firstName,
+        lastName:lastName,
         email: email,
         phone: phone,
         business_name: business,
+        location: location,
+        password:password
       }),
       headers: {
         "Content-Type": "application/json",
@@ -37,17 +56,19 @@ const SignUp = ({session, handleAlert, alert}) => {
           handleAlert(reply.message)
         }
         setPreload(false);
+        console.log("response:" + reply)
 
       })
       .catch(err => console.log(err.message));
+      setEmail("");setBusiness("");setFirstname("");setLastname("");setLocation("");setPhone("");
   };
 
   return (
-    <div className=" h-screen">
+    <div className=" h-fit">
       <Navigation />
-      <section className="py-4  bg-slate-200 h-full ">
+      <section className="py-1  bg-slate-200 h-full ">
         <div className={alert.show? 'alert active': 'alert'}>{alert.alert}</div>
-          <div className="m-auto shadow-md  mt-8 py-2 px-4 text-lg bg-lime-100 rounded-lg sm:w-8/12 md-6/12 lg:w-4/12">
+          <div className="m-auto shadow-md  mt-8 px-4 text-lg bg-lime-100 rounded-lg sm:w-8/12 md-6/12 lg:w-4/12">
             <div className="w-full">
               <div className=" text-left sm:mt-5">
                 <div className="items-center w-full">
@@ -57,56 +78,129 @@ const SignUp = ({session, handleAlert, alert}) => {
                 </div>
               </div>
             </div>
-
-            <div className="mt-6 space-y-2">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
+            <div className="mt-4 space-y-2">
+            <div>
+                <label htmlFor="email" className="">
+                  First Name
                 </label>
                 <input
                   type="text"
+                  name="firstName"
+                  id="firstName"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstname(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  placeholder="Enter last name"
+                  value={lastName}
+                  onChange={(e) => setLastname(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="">
+                  Email
+                </label>
+                <input
+                  type="email"
                   name="email"
                   id="email"
-                  className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                  placeholder="Enter your email"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  placeholder="optional"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="sr-only">
+                <label htmlFor="phone" className="">
                   Phone Number
                 </label>
                 <input
                   type="text"
                   name="phone"
                   id="text"
-                  className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                   placeholder="Enter your phone number"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e)=>setPhone(e.target.value)}
                 />
               </div>
               <div>
-                <label htmlFor="business" className="sr-only">
+                <label htmlFor="business" className="">
                   Business Name
                 </label>
                 <input
                   type="text"
                   name="business"
                   id="business"
-                  className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                   placeholder="Enter your business name"
                   value={business}
                   onChange={(e) => setBusiness(e.target.value)}
                 />
               </div>
+              <div>
+                <label htmlFor="business" className="">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  id="location"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  placeholder="Enter your location"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="business" className="">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="text-red-600">
+                {
+                  errorPassword
+                }
+              </div>
+              <div>
+                <label htmlFor="business" className="">
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                  value={pass}
+                  onChange={(e)=>setPass(e.target.value)}
+                />
+              </div>
               <div className="flex py-4 flex-col mt-4 lg:space-y-2">
                 <button
                   type="button"
-                  className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="flex items-center justify-center w-full px-10 py-1 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   onClick={() => {
-                    signUp();
+                    if(!errorPassword){
+                      console.log("no error in passwords", errorPassword);
+                      signUp();
+                    }
                   }}
                 >
                   {preload? "": "Sign Up"} 

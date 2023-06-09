@@ -18,7 +18,7 @@ const dashboard = ({session, setSession}) => {
     }else{
       navigate('/dashboard/Details');
       // get user data
-      fetch(`https://api.rhonpesa.online/api/v1/merchant-analytics/${mySession._id}`)
+      fetch(`http://localhost:4444/api/v1/merchant-analytics/${mySession._id}`)
         .then(res => res.json())
         .then(res => {
           console.log("dashboard: ", res)
