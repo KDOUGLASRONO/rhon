@@ -20,6 +20,7 @@ const SignUp = ({session, handleAlert, alert}) => {
   const [password, setPassword] = useState("");
   const [pass, setPass] = useState("");
   const [errorPassword, setErrorPassword]= useState("");
+  const [passwordError, setPasswordError]= useState("");
 
 
   useEffect(()=>{
@@ -79,6 +80,9 @@ const SignUp = ({session, handleAlert, alert}) => {
               </div>
             </div>
             <div className="mt-4 space-y-2">
+            <div className="py-4">
+              <h3 className="text-red-600"><i>{passwordError}</i></h3>
+            </div>
             <div>
                 <label htmlFor="email" className="">
                   First Name
@@ -173,9 +177,10 @@ const SignUp = ({session, handleAlert, alert}) => {
                   id="password"
                   className="block w-full px-2 py-1 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) =>{ setPassword(e.target.value); setPasswordError("")}}
                 />
               </div>
+              <h3 className="text-red-600"><i>{passwordError}</i></h3>             
               <div className="text-red-600">
                 {
                   errorPassword
@@ -199,7 +204,12 @@ const SignUp = ({session, handleAlert, alert}) => {
                   onClick={() => {
                     if(!errorPassword){
                       console.log("no error in passwords", errorPassword);
-                      signUp();
+                      if(password.length < 8){
+                        setPasswordError("password must be at least 8 characters")
+                      }
+                      else{
+                        signUp();
+                      }
                     }
                   }}
                 >
