@@ -68,7 +68,7 @@ const Withdraw = ({userInfo, handleAlert}) => {
     .then(res => {
       setPreload(false);
       handleAlert(res);
-      console.log(res);
+      console.log("response withdrawal",res);
     })
   }
 

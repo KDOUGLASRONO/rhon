@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const Navigation = () => {
   return (
     <div>
-      <header className="text-white bg-violet-400 body-font">
+      <header className="text-white bg-slate-400 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link to="/" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
             <svg

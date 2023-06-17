@@ -53,9 +53,9 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
   return (
     <div className="h-screen">
       <Navigation />
-      <section className="py-4  bg-slate-200 h-full">
+      <section className="py-4  bg-violet-50 h-full">
         <div className={alert.show? 'alert active': 'alert'}>{alert.alert}</div>
-        <div className="m-auto shadow-md  mt-8 py-2 px-4 text-lg bg-lime-100 rounded-lg sm:w-8/12 md-6/12 lg:w-4/12">
+        <div className="m-auto shadow-md  mt-8 py-2 px-4 text-lg bg-violet-100 rounded-lg sm:w-8/12 md-6/12 lg:w-4/12">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <h2 className="py-2 text-3xl font-extrabold text-center text-bold">
               Sign in to your account

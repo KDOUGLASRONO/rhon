@@ -35,7 +35,7 @@ const dashboard = ({session, setSession}) => {
   }
   
   return (
-    <div className='h-screen bg-inherit'>
+    <div className='h-screen bg-inherit w-full'>
       <Header userInfo={userInfo} session={session} setSession={setSession}/>
       <section className='flex-cols-1 md:flex flex-row-reverse h-4/5 w-full'>
         <div className='md:h-full md:w-9/12 h-4/5 '>
