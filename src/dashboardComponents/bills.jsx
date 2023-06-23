@@ -141,13 +141,13 @@ const bills = ({handleAlert, userInfo}) => {
 
 
   return (
-    <section className="w-full bg-lime-100 h-full">
+    <section className="w-full bg-violet-50 h-full">
     <div className='border-dashed border-2 w-full px-4 py-4 text-2xl'>
       <p className='accountAmount'>Account Balance: Ksh <span className='accountBalance'>{userInfo.balance < 0 ? "0" : userInfo.balance}</span></p>
       <h2>Lipa Bills bila Stress</h2>
     </div>
     <div className='flex justify-between border-dashed border-2 w-full px-4 py-4 text-lg'>
-      <select className="bg-lime-50 px-2 rounded-lg" name="billName" id="" defaultValue='Default' onChange={handleBillValue}>
+      <select className="bg-white px-2 rounded-lg" name="billName" id="" defaultValue='Default' onChange={handleBillValue}>
         <option selected disabled value='Default'>Select your bills..</option>
         {availableBills.map((singleBill)=>{
           return <AvailableBills key={singleBill._id} billId={billId} singleBill={singleBill}/>
@@ -170,7 +170,7 @@ const bills = ({handleAlert, userInfo}) => {
       </div>
       {/* Display Active Bills */}
       <div className="mt-2 px-4">
-        <h2 id='activeBill'className="text-xl bg-lime-200 py-1 rounded-lg px-4 text-bold" onClick={handleActiveBillSection}>Active Bills</h2>
+        <h2 id='activeBill'className="text-xl bg-violet-200 py-1 rounded-lg px-4 text-bold w-fit" onClick={handleActiveBillSection}>Active Bills</h2>
         <div className={activeBillSection? 'listBills active' : 'listBills'}>
           {
             activeBills.map((singleBill)=>{

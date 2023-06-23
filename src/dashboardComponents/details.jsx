@@ -5,7 +5,7 @@ import {IoCloudUpload} from 'react-icons/io5'
 const details = ({userInfo}) => {
   console.log(userInfo)
   return (
-    <section className='h-full bg-gradient-to-r from-lime-100 to-orange-200 via-white w-full '>
+    <section className='h-full bg-violet-50 w-full '>
       <div className="flex justify-between py-6 px-8 border-dashed border-2">
         <FaUserAlt className='detailsIcon h-10 w-10'/>
         <div className='userNameDetails'>

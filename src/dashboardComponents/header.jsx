@@ -12,7 +12,7 @@ const Header = ({userInfo, setSession}) => {
   }
 
   return (
-      <header className=" flex w-full text-gray-400 bg-violet-500 body-font">
+      <header className=" flex w-full text-gray-400 bg-slate-400 body-font">
         <div className="container  flex flex-wrap p-5 justify-between md:flex-row items-center">
           <div className="flex text-xl px-2 py-1 rounded-2xl border-solid border-2  text-white mb-4 md:mb-0">
             <img src="https://img.icons8.com/cotton/64/null/gender-neutral-user--v2.png" className="bg-slate-300 rounded-2xl h-8 w-8 mr-4"/>

@@ -23,23 +23,23 @@ const leftSideBar = ({activePage, setActivePage, handleActivePage}) => {
 
   return (
         <div className="grid grid-cols-3 h-full md:flex-cols-1 md:w-full md:px-4 py-2 text-violet-300 md:block">
-          <div className={`flex h-fit md:my-2 cursor-pointer w-fit md:w-full px-2 bg-violet-300 hover:bg-violet-400 py-2 rounded-lg ${activePage === 'Details'?'bg-violet-400':'links'}`} id='Details' onClick={navigateLink}>
+          <div className={`flex h-fit md:my-2 cursor-pointer w-fit md:w-full px-2 bg-stone-600 hover:bg-stone-800 py-2 rounded-lg ${activePage === 'Details'?'bg-violet-400':'links'}`} id='Details' onClick={navigateLink}>
               <img src="https://img.icons8.com/windows/32/null/bulleted-list.png" className="mr-4 h-6 w-6"/>
               <h3 className="text-white font-bold">Details</h3>
           </div>
-          <div className={` flex h-fit md:my-2 cursor-pointer w-fit md:w-full px-2 bg-violet-300 hover:bg-violet-400 py-2 rounded-lg ${activePage === 'Bills'?'bg-violet-400':'links'}`} id='Bills' onClick={navigateLink}>
+          <div className={` flex h-fit md:my-2 cursor-pointer w-fit md:w-full px-2 bg-stone-600 hover:bg-stone-800 py-2 rounded-lg ${activePage === 'Bills'?'bg-violet-400':'links'}`} id='Bills' onClick={navigateLink}>
               <img src="https://img.icons8.com/ios/50/null/refund-2.png" className="mr-4 h-6 w-6"/>
               <h3 className='text-white font-bold'>Bills</h3>
           </div> 
-          <div className={`flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-violet-300 hover:bg-violet-400 rounded-lg ${activePage === 'Withdraw'?'bg-violet-400':'links'}`} id='Withdraw' onClick={navigateLink}>
+          <div className={`flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-stone-600 hover:bg-stone-800 rounded-lg ${activePage === 'Withdraw'?'bg-violet-400':'links'}`} id='Withdraw' onClick={navigateLink}>
               <img src="https://img.icons8.com/ios/50/null/refund-2.png" className="mr-4 h-6 w-6"/>
               <h3 className='text-white font-bold'>Withdraw</h3>
           </div> 
-          <div className={` flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-violet-300 hover:bg-violet-400 rounded-lg ${activePage === 'Savings'?'bg-violet-400':'links'}`} id='Savings' onClick={navigateLink}>
+          <div className={` flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-stone-600 hover:bg-stone-800 rounded-lg ${activePage === 'Savings'?'bg-violet-400':'links'}`} id='Savings' onClick={navigateLink}>
               <img src="https://img.icons8.com/ios/50/null/get-cash--v1.png" className="mr-4 h-6 w-6"/>
               <h3 className='text-white font-bold'>Saving</h3>
           </div>
-          <div className={` flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-violet-300 hover:bg-violet-400 rounded-lg ${activePage === 'Transactions'?'bg-violet-400':'links'}`} id='Transactions' onClick={navigateLink}>
+          <div className={` flex h-fit md:my-2 md:w-full cursor-pointer w-fit px-2 py-2 bg-stone-600 hover:bg-stone-800 rounded-lg ${activePage === 'Transactions'?'bg-violet-400':'links'}`} id='Transactions' onClick={navigateLink}>
               <img src="https://img.icons8.com/ios/50/null/refund-2.png" className="mr-4 h-6 w-6"/>
               <h3 className='text-white font-bold'>Transactions</h3>
           </div>

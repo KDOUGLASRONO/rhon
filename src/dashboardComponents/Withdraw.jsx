@@ -73,7 +73,7 @@ const Withdraw = ({userInfo, handleAlert}) => {
   }
 
   return (
-    <section className='w-full h-full bg-lime-100 text-center py-8'>
+    <section className='w-full h-full bg-violet-50 text-center py-8'>
       <div className='w-full border-dashed border-2 py-4 px-8 m-auto first:text-2xl'>
         <h3 className="py-2 font-black">Account Balance</h3> 
         <h3 className="text-4xl text-violet-900 font-bold my-4"> ksh <span className=''>{userInfo.balance < 0? "0": userInfo.balance}</span></h3>
@@ -88,7 +88,7 @@ const Withdraw = ({userInfo, handleAlert}) => {
             className='px-2 py-1'
             />
         </div>
-        <button type='button' onClick={handleWithdrawal} className='py-2 px-4 w-full bg-violet-400 hover:bg-violet-500 rounded-lg'>
+        <button type='button' onClick={handleWithdrawal} className='py-2 px-4 w-full text-white bg-stone-600 hover:bg-stone-800 rounded-lg'>
           {preload? '': 'Withdraw'}<span className={preload? 'btnPreload active': 'btnPreload'}><span className='bg-green-500 '></span></span>
         </button>
       </div>

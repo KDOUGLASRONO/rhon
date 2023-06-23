@@ -110,7 +110,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
                 <div>
                   <button
                     type="button"
-                    className="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700"
+                    className="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-stone-600 hover:bg-stone-800 rounded-xl"
                     onClick={signIn}
                   >
                     {preload? "": "Sign In"} 

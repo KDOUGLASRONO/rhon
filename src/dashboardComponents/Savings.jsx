@@ -2,7 +2,7 @@ import React from 'react'
 
 const Savings = () => {
   return (
-    <div className='py-4 px-4 bg-lime-100 w-full h-full text-center'>
+    <div className='py-4 px-4 bg-violet-50 w-full h-full text-center'>
         <div className='py-4 px-4 text-4xl text-bold'>
           <h2>Saving Goals</h2>
         </div>

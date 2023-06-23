@@ -41,7 +41,7 @@ const dashboard = ({session, setSession}) => {
         <div className='md:h-full md:w-9/12 h-4/5 '>
           <Main userInfo={userInfo}/>
         </div>
-        <div className='bg-lime-50 md:h-full mb-0 h-1/5 md:w-3/12'>
+        <div className='bg-violet-100 md:h-full mb-0 h-1/5 md:w-3/12'>
           <LeftSideBar handleActivePage={handleActivePage} activePage={activePage} setActivePage={setActivePage}/>
         </div>
       </section>

@@ -18,7 +18,7 @@ const UserTransactions = () => {
   }, [])
 
   return (
-    <section className='userTransactions bg-lime-100'>
+    <section className='userTransactions bg-violet-50'>
       <h2 className='tittle'>Transactions</h2>
       <div className='viewTransactions'>
         <table>
