@@ -5,6 +5,8 @@ import Main from '../dashboardComponents/main';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { MdYard } from 'react-icons/md';
+import baseUrl from '../baseUrl';
+
 const dashboard = ({session, setSession}) => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({});
@@ -18,7 +20,7 @@ const dashboard = ({session, setSession}) => {
     }else{
       navigate('/dashboard/Details');
       // get user data
-      fetch(`http://localhost:4444/api/v1/merchant-analytics/${mySession._id}`)
+      fetch(`${baseUrl}/merchant-analytics/${mySession._id}`)
         .then(res => res.json())
         .then(res => {
           console.log("dashboard: ", res)

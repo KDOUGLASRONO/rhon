@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import baseUrl from "../baseUrl";
 
 import Navigation from "../components/Navigation";
 
@@ -26,7 +27,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
 
   const signIn = () => {
     setPreload(true);
-    fetch("http://localhost:4444/api/v1/merchant/login", {
+    fetch(`${baseUrl}/merchant/login`, {
       method: "POST",
       body: JSON.stringify(details),
       headers: {
@@ -36,6 +37,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
       .then((res) => res.json())
       .then((res) => {
         if(res['_id']){
+          console.log("response:",res)
           sessionStorage.setItem('session', JSON.stringify(res))
           setSession(res);
           navigate('/dashboard', {replace: true});
@@ -46,7 +48,7 @@ const SignIn = ({session, setSession, handleAlert, alert}) => {
       })
       .catch(err => {
         setPreload(false)
-        handleAlert('Something not right Wrong');
+        handleAlert('Something went Wrong');
       })
   };
 

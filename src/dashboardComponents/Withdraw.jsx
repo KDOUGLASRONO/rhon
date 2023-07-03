@@ -1,4 +1,5 @@
 import React, {useEffect, useState}from 'react'
+import baseUrl from '../baseUrl';
 
 const Withdraw = ({userInfo, handleAlert}) => {
   const [amount, setAmount] = useState(0);
@@ -51,7 +52,7 @@ const Withdraw = ({userInfo, handleAlert}) => {
       return;
     }
     setPreload(true);
-    fetch('http://localhost:4444/api/v1/withdraw', {
+    fetch(`${baseUrl}/withdraw`, {
       method: 'POST',
       body:JSON.stringify({
           "amount": amount,

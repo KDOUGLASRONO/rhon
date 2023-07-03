@@ -1,35 +1,23 @@
 import React, { useState } from 'react'
 import Navigation from '../components/Navigation'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import baseUrl from '../baseUrl';
 
 
 const ForgotPass = ({handleAlert, alert}) => {
     const [preload, setPreload] = useState(false);
     const [business_name, set_business_name] = useState("");
-    
-    const handleBusinessName = (e)=>{
-        const value = e.target.value;
-        if(value){
-            set_business_name(value);
-        }
-    }
 
     const changePassword = ()=>{
+        console.log("business_name", business_name);
         if(!business_name){
-            handleAlert("Business Name Cannot Be Blank")
+            console.log("Business Name Cannot Be Blank")
             return;
         }
         setPreload(true);
-        fetch('http://localhost:4444/api/v1/merchant/reset-pass', {
-            method: "POST",
-            body: JSON.stringify({
-                "business_name": business_name
-            }),
-            headers: {
-                "Contents-Type": "Application/Json"
-            }
-        })
-        .then(res => res.json())
+        axios.post(`${baseUrl}/merchant/reset-pass`,{business_name:business_name})
+        .then(res => res.data)
         .then(res => {
             setPreload(false);
             handleAlert(res)
@@ -54,7 +42,7 @@ const ForgotPass = ({handleAlert, alert}) => {
                         type="text"
                         name="business name"
                         value ={business_name}
-                        onChange={handleBusinessName}
+                        onChange={(e)=>set_business_name(e.target.value)}
                         className="px-2 py-4 h-6 rounded-lg w-3/4 "
                     />
                 </div>

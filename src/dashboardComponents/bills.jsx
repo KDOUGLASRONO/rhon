@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SingleSelectedBill from './SingleSelectedBill';
 import ActiveBills from './ActiveBills';
 import AvailableBills from './AvailableBills';
+import baseUrl from '../baseUrl';
 
 let selectedBills = [];
 let userBills = [];
@@ -14,7 +15,7 @@ const bills = ({handleAlert, userInfo}) => {
   const [activeBillSection, setActiveBillSection] = useState(true);
 
   function getAllBills(){
-    fetch("http://localhost:4444/api/v1/get-all-bills")
+    fetch(`${baseUrl}/get-all-bills`)
     .then(res => res.json())
     .then(res => {
       setAvailableBills(res);
@@ -24,7 +25,7 @@ const bills = ({handleAlert, userInfo}) => {
   function getUserActiveBIlls(){
     const session = JSON.parse(sessionStorage.getItem('session'));
     console.log("session:", session['_id'])
-    fetch(`http://localhost:4444/api/v1/get-merchant-bills/${session['_id']}`)
+    fetch(`${baseUrl}/get-merchant-bills/${session['_id']}`)
     .then(res => res.json())
     .then(res => {
       console.log("res:",res)
@@ -112,7 +113,7 @@ const bills = ({handleAlert, userInfo}) => {
 
   const addBill = ()=>{
     const session = JSON.parse(sessionStorage.getItem('session')); 
-    fetch('http://localhost:4444/api/v1/add-merchant-bill', {
+    fetch(`${baseUrl}/add-merchant-bill`, {
       method: 'POST',
       body: JSON.stringify(
         {

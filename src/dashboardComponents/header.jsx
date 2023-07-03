@@ -9,8 +9,8 @@ const Header = ({userInfo, setSession}) => {
     sessionStorage.removeItem('session');
     setSession(null);
     navigate('/', {replace: true});
+    //delete the refresh toke at the backend.
   }
-
   return (
       <header className=" flex w-full text-gray-400 bg-slate-400 body-font">
         <div className="container  flex flex-wrap p-5 justify-between md:flex-row items-center">

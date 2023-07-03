@@ -3,6 +3,7 @@ import Confirm from './mybillsconfirm'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import ActiveBills from './ActiveBills';
+import baseUrl from '../baseUrl';
 
 let allBills = [];
 function mybills(){
@@ -18,7 +19,7 @@ function mybills(){
 
     //get usll bills
     const getAllBills = async()=>{
-        await axios.get("https://api.rhonpesa.online/api/v1/get-all-bills")
+        await axios.get(`${baseUrl}/get-all-bills`)
         .then((response)=>{
             console.log("response all", response);
             console.log("response data:",response.data);
@@ -32,7 +33,7 @@ function mybills(){
     const getUserBills = async()=>{
         const session = JSON.parse(sessionStorage.getItem('session'));
         console.log("session: " + session);
-        axios.get(`https://api.rhonpesa.online/api/v1/get-merchant-bills/${session['_id']}`)
+        axios.get(`${baseUrl}/get-merchant-bills/${session['_id']}`)
         .then((response)=>{
             console.log("user bills data:", response.data);
             setuserBills(response.data)

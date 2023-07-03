@@ -2,8 +2,10 @@ import React from 'react'
 import {FaUserAlt} from 'react-icons/fa'
 import {GoLocation} from 'react-icons/go'
 import {IoCloudUpload} from 'react-icons/io5'
+
+
 const details = ({userInfo}) => {
-  console.log(userInfo)
+  //console.log(userInfo)
   return (
     <section className='h-full bg-violet-50 w-full '>
       <div className="flex justify-between py-6 px-8 border-dashed border-2">

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import SingleTransaction from './SingleTransaction'
+import baseUrl from '../baseUrl'
 
 const UserTransactions = () => {
   const [transactions, setTransactions] = useState([]);
 
   function getTransactions(){
     const session = JSON.parse(sessionStorage.getItem('session'));
-    fetch(`http://localhost:4444/api/v1/merchant-transactions/${session['_id']}`)
+    fetch(`${baseUrl}/merchant-transactions/${session['_id']}`)
     .then(res => res.json())
     .then(res => {
       setTransactions(res)

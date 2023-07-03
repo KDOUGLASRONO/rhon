@@ -4,6 +4,7 @@ import { FaPhp } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 import Navigation from "../components/Navigation";
+import baseUrl from "../baseUrl";
 
 const SignUp = ({session, handleAlert, alert}) => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const SignUp = ({session, handleAlert, alert}) => {
 
   const signUp = () => {
     setPreload(true);
-    fetch("http://localhost:4444/api/v1/merchant", {
+    fetch(`${baseUrl}/merchant`, {
       method: "POST",
       body: JSON.stringify({
         firstName:firstName,
